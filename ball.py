@@ -39,6 +39,9 @@ class Ball:
         elif key == "grass:ball":
             self.stopped = True
 
+        elif key == "zombie:flyball":
+            game_world.remove_object(self)
+
 
 
 
