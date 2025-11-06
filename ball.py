@@ -8,7 +8,7 @@ GRAVITY = 9.8  # 중력 가속도 (m/s²)
 class Ball:
     image = None
 
-    def __init__(self, x = 400, y = 300, throwin_speed = 15, throwin_angle = 45):
+    def __init__(self, x = 400, y = 300, throwin_speed = 15, throwin_angle = 30):
         if Ball.image == None:
             Ball.image = load_image('ball21x21.png')
         self.x, self.y = x, y
@@ -32,6 +32,13 @@ class Ball:
 
     def get_bb(self):   # bounding box, left top right bottom
         return self.x - 10, self.y - 10, self.x + 10, self.y + 10
+
+    def handle_collision(self, key, other):
+        if key == "boy:ball":
+            game_world.remove_object(self)
+        elif key == "grass:ball":
+            self.stopped = True
+
 
 
 

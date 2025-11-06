@@ -39,21 +39,17 @@ def init():
     for ball in balls:
         game_world.add_collision_pair("boy:ball", None, ball)
 
+    game_world.add_collision_pair("grass:ball", grass, None)
 
-
+    zombies = [Zombie() for _ in range(4)]
+    game_world.add_objects(zombies, 1)
 
 def update():
     game_world.update()
 
     # boy 와 공들 충돌 처리
     # 여러 객체들을 충돌처리하다보면 코드가 늘어진다. 충돌검사를 위한 데이터구조를 만든다. (dict 사용)
-    for ball in balls.copy():
-        if game_world.collide(boy, ball):
-            print(f"Collision boy: ball, ball at ({ball.x}, {ball.y})")
-            boy.ball_count += 1
-            balls.remove(ball)
-            game_world.remove_object(ball)
-
+    game_world.handle_collisions()
 
 
 def draw():
