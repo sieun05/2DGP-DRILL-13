@@ -33,7 +33,7 @@ class Zombie:
         self.load_images()
         self.frame = random.randint(0, 9)
         self.dir = random.choice([-1,1])
-
+        self.heart = 2
 
     def get_bb(self):
         return self.x - 100, self.y - 100, self.x + 100, self.y + 100
@@ -58,4 +58,12 @@ class Zombie:
 
     def handle_event(self, event):
         pass
+
+
+    def handle_collision(self, key, other):
+        if key == "zombie:flyball":
+            self.heart -= 1
+
+            if self.heart <= 0:
+                game_world.remove_object(self)
 
