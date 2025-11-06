@@ -38,7 +38,8 @@ class Ball:
             game_world.remove_object(self)
         elif key == "grass:ball":
             self.stopped = True
-
+            if self in game_world.collision_pairs["zombie:flyball"][1]:
+                game_world.collision_pairs["zombie:flyball"][1].remove(self)  # 충돌 검사 대상에서 제거
         elif key == "zombie:flyball":
             game_world.remove_object(self)
 
