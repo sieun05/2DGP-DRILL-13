@@ -189,3 +189,5 @@ class Boy:
         if key == "boy:ball":
             self.ball_count += 1
             # game_world.remove_object(other)     # 안좋은 습관? ...내가 할 일만 한다
+        elif key == "boy:zombie":
+            quit()

@@ -67,4 +67,6 @@ class Zombie:
 
             if self.heart <= 0:
                 game_world.remove_object(self)
+        elif key == "boy:zombie":
+            pass
 
