@@ -18,6 +18,7 @@ class Ball:
 
     def draw(self):
         self.image.draw(self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
     def update(self):
         if self.stopped:
@@ -28,6 +29,9 @@ class Ball:
 
         # y 축 속도에 중력 가속도 적용
         self.yv -= GRAVITY * game_framework.frame_time  # m/s
+
+    def get_bb(self):   # bounding box, left top right bottom
+        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
 
 
 
